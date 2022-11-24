@@ -20,10 +20,11 @@ app.use(express.static('public'))
 
 //CONEXION DB
 var con = mysql.createConnection({
-    host: 'localhost',
+    host: 'containers-us-west-121.railway.app',
     user: 'root',
-    password: 'n0m3l0',
-    database: 'users'
+    port: '7702',
+    password: 'JPjsg196BLvxNyrM4MtO',
+    database: 'railway'
 })
 
 con.connect((err) => {
@@ -31,7 +32,7 @@ con.connect((err) => {
         console.log("ERROR: " + err)
         return
     }
-    console.log("Conexion con 'users' establecida")
+    console.log("Conexion con 'railway' establecida")
 })
 
 //BYCRIPTJS

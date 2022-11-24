@@ -20,11 +20,11 @@ app.use(express.static('public'))
 
 //CONEXION DB
 var con = mysql.createConnection({
-    host: 'containers-us-west-121.railway.app',
-    user: 'root',
-    port: '7702',
-    password: 'JPjsg196BLvxNyrM4MtO',
-    database: 'railway'
+    host: process.env.HOST,
+    user: process.env.USER,
+    port: process.env.PORT,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 })
 
 con.connect((err) => {

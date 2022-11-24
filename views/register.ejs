@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edukatec | uwu Sign in</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/desing.css" rel="stylesheet" type="text/css">
+    <link href="css/Registro.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="mydiv"></div>
+    <div id="div-principal">
+        <div id="datos">
+            <form method="post" action="/reg" accept-charset="utf-8">
+                <table id="table">
+                    <tr>
+                        <td colspan="3">
+                            <h1>Registrate!</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="imagenes/void.png" width="50" height="0"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="name">Primer nombre *</label>
+                            <input type="text" class="inputC" name="name" id="name"
+                                value="<% if(typeof validaciones !='undefined') {%><%= valores.name %><%}%>">
+                        </td>
+                        <td>
+                            <img src="imagenes/void.png" alt="void" class="img-void2">
+                        </td>
+                        <td>
+                            <label for="lastname">Primer Apellido *</label>
+                            <input type="text" class="inputC" name="lastname" id="lastname"
+                                value="<% if (typeof validaciones !='undefined' ) {%><%= valores.lastname %><%}%>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pass">Crea tu contraseña *</label>
+                            <input type="password" class="inputC" name="pass" id="pass" onkeyup="Comprobar()">
+                        </td>
+                        <td>
+                            <button type="button" onclick="Ver()" id="ver"><img src="imagenes/see.png"
+                                    alt="ver"></button>
+                        </td>
+                        <td>
+                            <label for="pass-confirm">Confirmala *</label>
+                            <input type="password" class="inputC" name="pass-confirm" id="pass-confirm"
+                                onkeyup="Comprobar()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="mail">Correo electronico *</label>
+                            <input type="text" class="inputC" name="mail" id="mail" title="alguien@example.com"
+                                onclick="Mail()"
+                                value="<% if (typeof validaciones !='undefined' ) {%><%= valores.mail %><%}%>">
+                        </td>
+                        <td>
+                            <img src="imagenes/void.png" alt="void" class="img-void2">
+                        </td>
+                        <td>
+                            <fieldset>
+                                <legend>Rol *</legend>
+                                <label for="m">Maestro</label>
+                                <input type="radio" name="rol" value="maestro" id="m">
+                                <br>
+                                <label for="c">Coordinador</label>
+                                <input type="radio" name="rol" value="coordinador" id="c">
+                            </fieldset>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p id="err">‎</p>
+                            <!--<div id="g_id_onload"
+                                data-client_id="270992444334-g1s6hs8pbonhatjdhb4sdcmuoftfbo09.apps.googleusercontent.com"
+                                data-login_uri='/google-access'>
+                            </div>
+                            <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                                data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                            </div>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button class="send" id="send">Registrame!</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        </td>
+                        <td>
+                            <a id="a2" href="login">Ya tienes cuenta?</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div id="div-color">
+                <div id="img">
+                    <img src="imagenes/signin.png" alt="signin" id="img-principal">
+                    <% if (typeof validaciones !='undefined' ) {%>
+                        <% validaciones.forEach((validacion)=> { %>
+                            <p><%= validacion.msg %> ||</p>
+                                <% }) %>
+                                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.1/dist/sweetalert2.all.min.js"></script>
+    <script src="js/Registro.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if (typeof alert !="undefined" ) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+    }).then(() => {
+                    window.location = '/<%= ruta %>'
+                })
+        </script>
+        <% } %>
+</body>
+
+</html>

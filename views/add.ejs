@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/desing.css" rel="stylesheet" type="text/css">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/options.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/add.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/add.js"></script>
+    <title>Edukatec | Añadir</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/inicio-coordinadores"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/myaccountC"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/add_objects"><span class="icon-clipboard"></span>Crear...</a></li>
+                <li><a href="/asignar"><span class="icon-user-plus"></span>Asignar...</a></li>
+                <li><a href="#"><span class="icon-bubbles2"></span>Chat</a></li>
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="radio">
+        <input label="Alumno" type="radio" checked id="create" name="create" onclick="change_pupil()">
+        <input label="Grupo" type="radio" id="create" name="create" onclick="change_group()">
+        <input label="Padre" type="radio" id="create" name="create" onclick="change_tutor()">
+    </div>
+
+    <div class="mydiv"></div>
+
+    <div id="div-crear-alumno">
+        <form method="post" action="/crear_alumno" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th>
+                        <h1>Crear un alumno</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name">Nombre completo</label>
+                        <input type="text" class="inputC" name="name" id="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Seleccione grupo:
+                        <select name="grupo" class="select">
+                            <option value="Sin definir">
+                                Indefinido
+                            </option>
+                            <% for (i=0; i < grupos.length; i++) { %>
+                                <option value="<%= grupos[i].id %>">
+                                    <%= grupos[i].nombre %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><button class="button">Crear alumno</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="div-crear-grupo" data-aos="fade-left">
+        <form method="post" action="/crear_grupo" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th>
+                        <h1>Crear grupos</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name">Nombre del grupo</label>
+                        <input type="text" class="inputC" name="name" id="name" required=""
+                            pattern="[A-Za-z0-9- ]{1,30}" title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><button class="button">Crear grupo</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="div-crear-padre">
+        <form method="post" action="/crear_padre" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th>
+                        <h1>Crear un padre</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name">Nombre completo del padre</label>
+                        <input type="text" class="inputC" name="name" id="name" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><button class="button">Crear padre</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="div-crear-tema">
+        <form method="post" action="/crear_tema" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <h1>Añadir un tema</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="subject">Materia</label>
+                        <input type="text" class="inputC" name="subject" id="subject" required=""
+                            pattern="[A-Za-z- ]{1,30}" title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                    <td>
+                        <label for="topic">Tema</label>
+                        <input type="text" class="inputC" name="topic" id="topic" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p><button class="button">Crear tema</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="fonts.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/report.css" rel="stylesheet">
+    <link href="css/desing.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/report.js"></script>
+    <title>Edukatec | Crear reporte</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/myaccountM"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/inicio"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/mis_alumnos"><span class="icon-man-woman"></span>Mis alumnos</a></li>
+                <li><a href="/add"><span class="icon-user-plus"></span>Añadir alumno/materia/padre</a></li>
+                <li><a href="/mis_materias"><span class="icon-books"></span>Mis materias</a></li>
+                <li><a href=""><span class="icon-profile"></span>Reportes de evaluacion</a></li>
+                <li><a href="/report"><span class="icon-clipboard"></span>Crear reporte de evaluacion</a></li>
+                <li><a href=""><span class="icon-bubbles2"></span>Chat</a></li>
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="div-reporte">
+        <form action="/reporte" method="post">
+            <table>                              
+                <tr>
+                    <th>
+                        Alumno:
+                    </th>
+                    <td>
+                        <select name="alumnos">
+                            <% for (i=0; i < alumnos.length; i++) { %>
+                            <option value="<%= alumnos[i].name %>">
+                                <%= alumnos[i].name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Materias
+                    </th>
+                    <th>
+                        Anotaciones
+                    </th>
+                </tr>
+                <% for (i=0; i < materias.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= materias[i].name %>
+                    </td>
+                    <td>
+                        <textarea name="<%= materias[i].name %>"></textarea>
+                    </td>
+                    <% } %>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="button" type="submit">Generar Reporte</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

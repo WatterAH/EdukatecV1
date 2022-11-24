@@ -1,0 +1,41 @@
+.radio {
+    text-align: center;
+    border: 0;
+    background: #3FB2B0;
+    padding: 4px;
+    border-radius: 3px;
+    position: relative;
+    z-index: 0;
+}
+
+.radio input {
+    width: auto;
+    height: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 4px 8px;
+    background: #3FB2B0;
+    color: white;
+    font-size: 18px;
+    font-family: Candara;
+    transition: all 100ms linear;
+}
+
+.radio input:checked {
+    background-color: #FFC300;
+    color: #fff;
+    box-shadow: 0 1px 1px #0000002e;
+    text-shadow: 0 1px 0px #79485f7a;
+    font-family: Candara;
+}
+
+.radio input:before {
+    content: attr(label);
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}

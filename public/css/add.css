@@ -1,0 +1,196 @@
+table {
+    width: 90%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#div-crear-alumno {
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px #999;
+    z-index: 0;
+}
+
+#div-crear-grupo {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px #999;
+    display: none;
+    z-index: 0;
+}
+
+#div-crear-padre {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px #999;
+    display: none;
+    z-index: 0;
+}
+
+#div-crear-materia {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px #999;
+    z-index: 0;
+}
+
+#div-crear-tema {
+    width: 40%;
+    height: 60%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px #999;
+    display: none;
+    z-index: 0;
+}
+
+#div-title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#div-title h1 {
+    color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+    font-family: Cambria;
+    margin: 15px;
+}
+
+h1::selection {
+    background: transparent;
+}
+
+label {
+    color: #3FB2B0;
+}
+
+label::selection {
+    background: transparent;
+}
+
+.img-void {
+    height: 15px;
+    width: 40px;
+}
+
+.inputC {
+    margin: 10px;
+}
+
+.button {
+    margin: 10px;
+}
+
+/*
+<div id="div-crear-materia">
+        <form method="post" action="/crear_materia" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th>
+                        <h1>Añadir una materia</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name">Nombre de la materia</label>
+                        <input type="text" class="inputC" name="name" id="name" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><button class="button">Crear materia</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="div-crear-padre">
+        <form method="post" action="/crear_padre" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th>
+                        <h1>Añadir un padre</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name">Nombre completo del padre</label>
+                        <input type="text" class="inputC" name="name" id="name" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><button class="button">Crear padre</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="div-crear-tema">
+        <form method="post" action="/crear_tema" accept-charset="utf-8">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <h1>Añadir un tema</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="topic">Tema</label>
+                        <input type="text" class="inputC" name="topic" id="topic" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                    <td>
+                        <label for="subject">Materia</label>
+                        <input type="text" class="inputC" name="subject" id="subject" required="" pattern="[A-Za-z- ]{1,30}"
+                            title="Solo letras, sin espacios ni caracteres">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p><button class="button">Crear tema</button></p>
+                    </td>
+                </tr>
+            </table>
+        </form> 
+    </div>

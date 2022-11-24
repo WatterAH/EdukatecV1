@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/asignar.css" rel="stylesheet">
+    <link href="css/options.css" rel="stylesheet">
+    <link href="css/desing.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/add.js"></script>
+    <title>Edukatec | Asignar</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/inicio-coordinadores"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/myaccountC"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/add_objects"><span class="icon-clipboard"></span>Crear...</a></li>
+                <li><a href="/asignar"><span class="icon-user-plus"></span>Asignar...</a></li>
+                <li><a href="#"><span class="icon-bubbles2"></span>Chat</a></li>
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="radio">
+        <input label="Alumno-Grupo" type="radio" checked id="create" name="create" onclick="change_alumn()">
+        <input label="Hijo-Padre" type="radio" id="create" name="create" onclick="change_son()">
+        <input label="Grupo-Maestro" type="radio" id="create" name="create" onclick="change_teacher()">
+    </div>
+
+    <div id="div-asignar-grupos">
+        <div class="container">
+            <form action="/asignar_alumnos" method="post">
+                <ul class="ks-cboxtags">
+                    <% for (i=0; i < alumnos.length; i++) { %>
+                        <li>
+                            <input type="checkbox" name="alumnos" id="<%= alumnos[i].id %>"
+                                value="<%= alumnos[i].id %>">
+                            <label for="<%= alumnos[i].id %>">
+                                <%= alumnos[i].name %>
+                            </label>
+                        </li>
+                        <% } %>
+                </ul>
+                <div id="grupos">
+                    Seleccione grupo:
+                    <select name="grupo" class="select">
+                        <% for (i=0; i < grupos.length; i++) { %>
+                            <option value="<%= grupos[i].id %>">
+                                <%= grupos[i].nombre %>
+                            </option>
+                            <% } %>
+                    </select>
+                    <button class="button" type="submit">Asignar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="div-asignar-hijos">
+        <div class="container">
+            <form action="/asignar_hijos" method="post">
+                <ul class="ks-cboxtags">
+                    <% for (i=0; i < alumnos.length; i++) { %>
+                        <li>
+                            <input type="checkbox" name="hijos" id="<%= alumnos[i].name %>"
+                                value="<%= alumnos[i].id %>">
+                            <label for="<%= alumnos[i].name %>">
+                                <%= alumnos[i].name %>
+                            </label>
+                        </li>
+                        <% } %>
+                </ul>
+                <div id="padres">
+                    Seleccione al padre o tutor:
+                    <select name="padre" class="select">
+                        <% for (i=0; i < padres.length; i++) { %>
+                            <option value="<%= padres[i].id %>">
+                                <%= padres[i].name %>
+                            </option>
+                            <% } %>
+                    </select>
+                    <button class="button" type="submit">Asignar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="div-asignar-maestros">
+        <div class="container">
+            <form action="/asignar_grupos" method="post">
+                <ul class="ks-cboxtags">
+                    <% for (i=0; i < grupos.length; i++) { %>
+                        <li>
+                            <input type="checkbox" name="grupos" id="<%= grupos[i].nombre %>"
+                                value="<%= grupos[i].id %>">
+                            <label for="<%= grupos[i].nombre %>">
+                                <%= grupos[i].nombre %>
+                            </label>
+                        </li>
+                        <% } %>
+                </ul>
+                <div id="maestros">
+                    Seleccione al maestro
+                    <select name="maestro" class="select">
+                        <% for (i=0; i < maestros.length; i++) { %>
+                            <option value="<%= maestros[i].id %>">
+                                <%= maestros[i].name %> <%= maestros[i].lastname %>
+                            </option>
+                            <% } %>
+                    </select>
+                    <button class="button" type="submit">Asignar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

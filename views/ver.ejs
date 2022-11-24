@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/desing.css" rel="stylesheet" type="text/css">
+    <link href="css/ver.css" rel="stylesheet" type="text/css">
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/options.css" rel="stylesheet">
+    <title>Edukatec | Mis alumnos</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/inicio"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/myaccountM"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/ver_todo"><span class="icon-man-woman"></span>Ver todo...</a></li>
+                <li><a href="/crear_page"><span class="icon-book"></span>Crear materias y temas</a></li>
+                <li><a href="/generar_registro"><span class="icon-clipboard"></span>Crear registro</a></li>
+                <!--<li><a href=""><span class="icon-bubbles2"></span>Chat</a></li>-->
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="radio">
+        <input label="Mis Alumnos" type="radio" checked id="create" name="create" onclick="change_alumns()">
+        <input label="Mis Materias" type="radio" id="create" name="create" onclick="change_subjects()">
+        <input label="Mis temas" type="radio" id="create" name="create" onclick="change_topics()">
+        <input label="Mis registros" type="radio" id="create" name="create" onclick="change_regs()">
+    </div>
+
+    <div id="alumnos">
+        <% if (alumnos.length==0) { %>
+            No hay alumnos
+            <% } %>
+                <table>
+                    <tr>
+                        <% for (i=0; i < alumnos.length; i++) { %>
+                            <% if (i % 3==0 && i !=0) { %>
+                    <tr>
+                    </tr>
+                    <% } %>
+                        <td>
+                            <div class=" card-client">
+                                <div class="user-picture">
+                                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="name-client">
+                                    <%= alumnos[i].name %>
+                                        <span>Alumno
+                                        </span>
+                                </p>
+                                <div class="social-media">
+                                    <a href="#"
+                                        onclick="confirmar_alumno(<%= alumnos[i].id %>, '<%= alumnos[i].name %>')">Eliminar</a>
+                                    <a href="#"
+                                        onclick="editar_alumno(<%= alumnos[i].id %>, '<%= alumnos[i].name %>')">Editar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <% } %>
+                            </tr>
+                </table>
+    </div>
+
+    <div id="materias">
+        <% if (materias.length==0) { %>
+            No hay materias
+            <% } %>
+                <table>
+                    <tr>
+                        <% for (i=0; i < materias.length; i++) { %>
+                            <% if (i % 3==0 && i !=0) { %>
+                    <tr>
+                    </tr>
+                    <% } %>
+                        <td>
+                            <div class=" card-client">
+                                <div class="user-picture">
+                                    <img src="imagenes/book.png" alt="book" width="60" height="60">
+                                </div>
+                                <p class="name-client">
+                                    <%= materias[i].name %>
+                                        <span>Materia
+                                        </span>
+                                </p>
+                                <div class="social-media">
+                                    <a href="#"
+                                        onclick="confirmar_materia(<%= materias[i].id %>, '<%= materias[i].name %>')">Eliminar</a>
+                                    <a href="#"
+                                        onclick="editar_materia(<%= materias[i].id %>, '<%= materias[i].name %>')">Editar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <% } %>
+                            </tr>
+                </table>
+    </div>
+
+    <div id="temas">
+        <% if (temas.length==0) { %>
+            No hay temas
+            <% } %>
+                <table>
+                    <tr>
+                        <% for (i=0; i < temas.length; i++) { %>
+                            <% if (i % 3==0 && i !=0) { %>
+                    <tr>
+                    </tr>
+                    <% } %>
+                        <td>
+                            <div class=" card-client">
+                                <div class="user-picture">
+                                    <img src="imagenes/topic.png" alt="topic" width="60" height="60">
+                                </div>
+                                <p class="name-client">
+                                    <%= temas[i].name %>
+                                        <span>Tema de <%= temas[i].materia %>
+                                        </span>
+                                </p>
+                                <div class="social-media">
+                                    <a href="#"
+                                        onclick="confirmar_tema(<%= temas[i].id %>, '<%= temas[i].name %>')">Eliminar</a>
+                                    <a href="#"
+                                        onclick="editar_tema(<%= temas[i].id %>, '<%= temas[i].name %>')">Editar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <% } %>
+                            </tr>
+                </table>
+    </div>
+
+    <div id="registros">
+        <% if (registros.length==0) { %>
+            No hay registros
+            <% } %>
+                <table>
+                    <tr>
+                        <% for (i=0; i < registros.length; i++) { %>
+                            <% if (i % 2==0 && i !=0) { %>
+                    <tr>
+                    </tr>
+                    <% } %>
+                        <td>
+                            <div class=" card-client" id="card_tam">
+                                <div class="user-picture">
+                                    <img src="imagenes/topic.png" alt="topic" width="60" height="60">
+                                </div>
+                                <p class="name-client">
+                                    <%= registros[i].name %>
+                                        <br>
+                                        <br>
+                                        <span>Registro para <b>
+                                                <%= registros[i].materia %>
+                                            </b> <br> en el tema de <b>
+                                                <%= registros[i].tema %>
+                                            </b>
+                                        </span>
+                                </p>
+                                <div class="social-media">
+                                    Rendimiento: <b>
+                                        <%= registros[i].performance %>
+                                    </b>
+                                    <br>
+                                    <br>
+                                    "<%= registros[i].notes %>"
+                                        <br>
+                                        <br>
+                                        Se emitio el:
+                                        <b>
+                                            <%= registros[i].date %>
+                                        </b>
+                                        <a href="#"></a>
+                                </div>
+                            </div>
+                        </td>
+                        <% } %>
+                            </tr>
+                </table>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/add.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.1/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>

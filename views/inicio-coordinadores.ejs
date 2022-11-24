@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/inicio.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">    
+    <title>Edukatec | Inicio</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/inicio-coordinadores"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/myaccountC"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/add_objects"><span class="icon-clipboard"></span>Crear...</a></li>
+                <li><a href="/asignar"><span class="icon-user-plus"></span>Asignar...</a></li>
+                <li><a href="#"><span class="icon-bubbles2"></span>Chat</a></li>
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="google-calendar">
+        <iframe
+            src="https://calendar.google.com/calendar/embed?height=550&wkst=2&bgcolor=%23F6BF26&ctz=America%2FMexico_City&showTitle=0&showDate=1&src=YWQ3ZTIzYjNjMDNjYTQzNTMwYTM4Nzk5NGQ2OGQ1OGU4MTFjYTc3ZGFiYmIyYmJiNzE1ZmE3MDNlNTg1MWVlNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=aHQzamxmYWFjNWxmZDYyNjN1bGZoNHRxbDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZXMubWV4aWNhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%233F51B5&color=%23B39DDB&color=%234285F4"
+            style="border-width:0" frameborder="0" scrolling="no" id="iframe"></iframe>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

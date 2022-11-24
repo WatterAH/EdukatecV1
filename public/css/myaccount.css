@@ -1,0 +1,73 @@
+.card-name {
+    background-color: #3FB2B0;
+    width: 30%;
+    height: 20%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 1em;
+    display: flex;
+    align-items: flex-end;
+}
+
+.card-name .p-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.card-name .p-sub {
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin: 5px 0 15px 0;
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+}
+
+.card-lastname {
+    background-color: #3FB2B0;
+    width: 30%;
+    height: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 7px;
+}
+
+.card-mail {
+    background-color: #3FB2B0;
+    width: 30%;
+    height: 15%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 7px;
+}
+
+.card-mail p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.card-mail a {
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin: 5px 0 15px 0;
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+}

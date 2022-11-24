@@ -1,0 +1,481 @@
+/*BOTONES*/
+.button {
+    --color: #3FB2B0;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+    margin: 10px;
+}
+
+.button::selection {
+    background: transparent;
+}
+
+.button::before,
+.button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: #FFFFFF;
+}
+
+.button:active {
+    filter: brightness(.8);
+}
+
+/*BOTONE2*/
+.send {
+    background-color: #FFC300;
+    width: 80%;
+    height: 45px;
+    border-color: transparent;
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: white;
+    box-shadow: 4px 4px 10px #999;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.send::selection {
+    background: transparent;
+}
+
+.send:disabled {
+    filter: brightness(.8);
+}
+
+.send:hover,
+.send:focus {
+    width: 70%;
+    outline: none;
+    padding: .2rem 1rem;
+}
+
+.send:active {
+    filter: brightness(.8);
+}
+
+/*BOTON3*/
+#ver {
+    border-radius: .8em;
+    border-color: transparent;
+}
+
+#ver:hover,
+#ver:focus {
+    border-color: #777;
+}
+
+#ver:active {
+    filter: brightness(.8);
+}
+
+/* BOTON4 */
+.button-arrow {
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #2cb5a0;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    border: #004dff;
+    transition: 0.5s;
+}
+
+.button-arrow:hover {
+    transform: scale(1.1);
+}
+
+.button-arrow:active {
+    background-color: #2cb5a0;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    margin-left: 25%;
+    margin-right: auto;
+    margin-top: 45%;
+    margin-bottom: 50%;
+    border-bottom: 15px solid white;
+    transform: rotate(-90deg);
+}
+
+/* From uiverse.io by @satyamchaudharydev */
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
+
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
+
+/* styling of whole input container */
+.form {
+    --timing: 0.3s;
+    --width-of-input: 200px;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #fff;
+    --border-color: #2cb5a0;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg, #fff);
+}
+
+/* styling of Input */
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+
+/* styling of animated border */
+.form:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+}
+
+/* Hover on Input */
+.form:focus-within {
+    border-radius: var(--after-border-radius);
+}
+
+input:focus {
+    outline: none;
+}
+
+/* here is code of animated border */
+.form:focus-within:before {
+    transform: scale(1);
+}
+
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* close button shown when typing */
+input:not(:placeholder-shown)~.reset {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sizing svg icons */
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+/*CARDS*/
+#card_tam {
+    width: 25rem;
+    height: 20rem;
+}
+
+.card-client {
+    background: #2cb5a0;
+    width: 20rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 4px solid #7cdacc;
+    box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.card-client:hover {
+    transform: translateY(-10px);
+}
+
+.user-picture {
+    overflow: hidden;
+    object-fit: cover;
+    width: 5rem;
+    height: 5rem;
+    border: 4px solid #7cdacc;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.user-picture svg {
+    width: 2.5rem;
+    fill: currentColor;
+}
+
+.name-client {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.name-client span {
+    display: block;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.social-media:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background: #7cdacc;
+}
+
+.social-media a {
+    position: relative;
+    margin-right: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.social-media a:last-child {
+    margin-right: 0;
+}
+
+.social-media a svg {
+    width: 1.1rem;
+    fill: currentColor;
+}
+
+/*-- Tooltip Social Media --*/
+.tooltip-social {
+    background: #262626;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    padding: 0.5rem 0.4rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -90%);
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.tooltip-social:after {
+    content: " ";
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    transform: translate(-50%, 100%);
+}
+
+.social-media a .tooltip-social:after {
+    border-top-color: #262626;
+}
+
+.social-media a:hover .tooltip-social {
+    opacity: 1;
+    transform: translate(-50%, -130%);
+}
+
+/*INPUTS*/
+.inputC {
+    width: 80%;
+    line-height: 25px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 1rem;
+    outline: none;
+    background-color: transparent;
+    color: #777;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.inputC:focus,
+.inputC:hover {
+    width: 75%;
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 5rem;
+    border-color: #3FB2B0;
+}
+
+.inputC::placeholder {
+    color: #3FB2B0;
+}
+
+.inputC:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+/*SLIDERS*/
+.switch {
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 20px;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #3FB2B0;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px rgb(0, 221, 80);
+}
+
+input:checked+.slider:before {
+    transform: translateX(1.5em);
+}
+
+select {
+    background-color: #ffd755;
+    border-color: transparent;
+    border-radius: 2em;
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    margin: 20px;
+    font-family: Candara;
+    font-size: 15px;
+}
+
+select:hover {
+    filter: brightness(.9);
+}
+
+select:focus {
+    outline: none;
+}
+
+textarea {
+    background-color: #ffd755;
+    resize: none;
+    width: 60%;
+    height: 70px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: transparent;  
+    font-family: Candara;    
+}
+
+textarea:focus {
+    outline: none;
+}
+
+#date {
+    width: 150px;
+    height: 30px;
+    background-color: #ffd755;
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+    font-size: 17px;
+    font-family: Candara;
+}

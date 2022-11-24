@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edukatec | Log in</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    <link href="css/desing.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="mydiv">
+    </div>
+    <div id="principal">
+        <div id="datos">
+            <form method="POST" action="/auth">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <h1>Bienvenido</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input placeholder="Correo" type="text" class="inputC" name="mail"
+                                value="<% if (typeof validaciones !='undefined' ) {%><%= valores.mail %><%}%>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input placeholder="Password" type="password" class="inputC" name="pass">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="register">No tienes cuenta?</a>
+                        </td>
+                        <td>
+                            <a href="/forgot">Olvidaste tu contraseña?</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="send" type="submit">Vamos!</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <% if (typeof validaciones !='undefined' ) {%>
+                                <% validaciones.forEach((validacion)=> { %>
+                                    <p>
+                                        <%= validacion.msg %> ||
+                                    </p>
+                                    <% }) %>
+                                        <% } %>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="image">
+            <img src="imagenes/Login.png" alt="login">
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if (typeof alert !="undefined" ) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(() => {
+                    window.location = '/<%= ruta %>'
+                })
+        </script>
+        <% } %>
+</body>
+
+</html>

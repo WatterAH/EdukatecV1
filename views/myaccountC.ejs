@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/myaccount.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.1/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Edukatec | Mi cuenta </title>
+</head>
+
+<body>
+    <header>
+        <div class="menu-bar">
+            <a href="#" class="btn-menu"><span class="icon-menu"></span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/inicio-coordinadores"><span class="icon-home3"></span>Inicio</a></li>
+                <li><a href="/myaccountC"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/add_objects"><span class="icon-clipboard"></span>Crear...</a></li>
+                <li><a href="/asignar"><span class="icon-user-plus"></span>Asignar...</a></li>
+                <li><a href="#"><span class="icon-bubbles2"></span>Chat</a></li>
+                <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="div-datos">
+        <table>
+            <tr>
+                <td>
+                    Nombre: <%= name %>
+                        <%= lastname %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Telefono: <%= tel %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Correo: <%= mail %>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button onclick="confirmarC()" class="button">Eliminar cuenta</button>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

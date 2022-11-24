@@ -1,0 +1,86 @@
+h1 {
+    text-align: center;
+    font-family: Cambria;
+    margin-bottom: 30px;
+}
+
+h1::selection {
+    background: transparent;
+}
+
+#div-buscador {
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+#alumnos {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+}
+
+#materias {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}
+
+#temas {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}
+
+#registros {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}
+
+#maestros {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+}
+
+#coordinadores {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}
+
+#padres {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}
+
+#admins {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    z-index: 0;
+    display: none;
+}

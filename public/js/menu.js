@@ -1,5 +1,3 @@
-$(document).ready(main)
-
 var cont = 1
 
 function main() {

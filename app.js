@@ -20,11 +20,10 @@ app.use(express.static('public'))
 
 //CONEXION DB
 var con = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    port: process.env.PORT,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: 'localhost',
+    user: 'Watter',
+    password: 'takemebacktola',
+    database: 'users'
 })
 
 con.connect((err) => {
@@ -278,7 +277,8 @@ app.get('/add_objects', async (req, res) => {
     con.query('SELECT * FROM coordinadores WHERE mail = ?', [mail], async (err, coordinador) => {
         if (err) return console.log(err)
         if (coordinador.length == 0) return res.redirect('login')
-        con.query('SELECT * FROM grupos', (err, grupos) => {
+        var id_coordinador = coordinador[0].id
+        con.query('SELECT * FROM grupos WHERE id_coordinador = ?', [id_coordinador], (err, grupos) => {
             if (err) return console.log(err)
             res.render('add', {
                 grupos: grupos
@@ -315,10 +315,8 @@ app.get('/asignar', async (req, res) => {
 //CREAR ALUMNO
 app.post('/crear_alumno', [
     body('name', 'No es un nombre!')
-        .exists()
-        .custom((value, { req }) => {
-
-        })
+        .isLength({ min: 1 })
+        .exists(),
 ], async (req, res) => {
     const name = req.body.name
     const grupo = req.body.grupo
@@ -334,28 +332,17 @@ app.post('/crear_alumno', [
                 var id_grupo = grupo[0].id
                 con.query('INSERT INTO alumnos SET ?', { id_coordinador: id_coordinador, id_grupo: id_grupo, name: name }, async (err) => {
                     if (err) console.log(err)
-                    con.query('SELECT * FROM grupos WHERE id_coordinador = ?', [id_coordinador], async (err, grupos) => {
-                        if (err) return console.log(err)
-                        res.render('add', {
-                            grupos: grupos
-                        })
-                    })
+                    res.redirect('add_objects')
                 })
             })
         } else {
             con.query('INSERT INTO alumnos SET ?', { id_coordinador: id_coordinador, id_grupo: grupo, name: name }, async (err) => {
                 if (err) return console.log(err)
-                con.query('SELECT * FROM grupos WHERE id_coordinador = ?', [id_coordinador], async (err, grupos) => {
-                    if (err) return console.log(err)
-                    res.render('add', {
-                        grupos: grupos
-                    })
-                })
+                res.redirect('add_objects')
             })
         }
 
     })
-
 })
 
 //CREAR GRUPO
@@ -366,19 +353,12 @@ app.post('/crear_grupo', async (req, res) => {
         if (coordinador.length == 0) return res.redirect('login')
         if (err) return console.log(err)
         const id_coordinador = coordinador[0].id
-        con.query('SELECT * FROM grupos WHERE nombre = ?', [name], async (err, grupos) => {
+        con.query('SELECT * FROM grupos WHERE nombre = ? AND id_coordinador = ?', [name, id_coordinador], async (err, grupos) => {
             if (err) return console.log(err)
-            if (grupos.length > 0) return res.render('add', {
-                grupos: grupos
-            })
+            if (grupos.length > 0) return res.redirect('add_objects')
             con.query('INSERT INTO grupos SET ?', { id_coordinador: id_coordinador, nombre: name }, async (err) => {
                 if (err) return console.log(err)
-                con.query('SELECT * FROM grupos WHERE id_coordinador = ?', [id_coordinador], async (err, grupos) => {
-                    if (err) return console.log(err)
-                    res.render('add', {
-                        grupos: grupos
-                    })
-                })
+                res.redirect('add_objects')
             })
         })
     })
@@ -393,12 +373,7 @@ app.post('/crear_padre', async (req, res) => {
         const id_coordinador = coordinador[0].id
         con.query('INSERT INTO padres SET ?', { id_coordinador: id_coordinador, name: name }, async (err) => {
             if (err) return console.log(err)
-            con.query('SELECT * FROM grupos WHERE id_coordinador = ?', [id_coordinador], async (err, grupos) => {
-                if (err) return console.log(err)
-                res.render('add', {
-                    grupos: grupos
-                })
-            })
+            res.redirect('add_objects')
         })
 
     })
@@ -569,7 +544,7 @@ app.get('/generar_registro', (req, res) => {
             con.query('SELECT id_grupo FROM asignacion_grupos WHERE id_maestro = ?', [id_maestro], async (err, grupos) => {
                 if (err) return console.log(err)
                 if (grupos.length == 0) {
-                    con.query('SELECT * FROM alumnos WHERE id_grupo = ? ', [0], async (err, alumnos) => {
+                    con.query('SELECT * FROM alumnos WHERE id_grupo = ? ', [-1], async (err, alumnos) => {
                         if (err) return console.log(err)
                         con.query('SELECT * FROM materias WHERE id_maestro = ?', [id_maestro], async (err, materias) => {
                             if (err) return console.log(err)
@@ -668,7 +643,7 @@ app.get('/ver_todo', (req, res) => {
             con.query('SELECT id_grupo FROM asignacion_grupos WHERE id_maestro = ?', [id], async (err, grupos) => {
                 if (err) return console.log(err)
                 if (grupos.length == 0) {
-                    con.query('SELECT * FROM alumnos WHERE id_grupo = ? ', [0], async (err, alumnos) => {
+                    con.query('SELECT * FROM alumnos WHERE id_grupo = ? ', [-1], async (err, alumnos) => {
                         if (err) return console.log(err)
                         con.query('SELECT * FROM materias WHERE id_maestro = ?', [id], async (err, materias) => {
                             if (err) return console.log(err)
@@ -782,7 +757,7 @@ app.get('/ver_hijos', (req, res) => {
         con.query('SELECT id_alumno FROM asignacion_padres WHERE id_padre = ?', [id], async (err, alumnos_id) => {
             if (err) return console.log(err)
             if (alumnos_id.length == 0) {
-                con.query('SELECT * FROM alumnos WHERE id = ?', [0], async (err, alumnos) => {
+                con.query('SELECT * FROM alumnos WHERE id = ?', [-1], async (err, alumnos) => {
                     con.query('SELECT * FROM registros WHERE id_alumno = ?', [0], async (err, registros) => {
                         res.render('inicio-padres', {
                             alumnos: alumnos,

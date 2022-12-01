@@ -21,8 +21,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/inicio-admins"><span class="icon-home3"></span>Inicio</a></li>
-                <li><a href="/myaccountA"><span class="icon-user"></span>Mi cuenta</a></li>
+                <li><a href="/inicio-admins"><span class="icon-home3"></span>Inicio</a></li>               
                 <li><a href="/admin"><span class="icon-user-plus"></span>Administrar cuentas...</a></li>
                 <li><a href="#" onclick="logout()"><span class="icon-exit"></span>Cerrar sesion</a></li>
             </ul>
@@ -100,6 +99,9 @@
                                 <p class="name-client">
                                     <%= coordinadores[i].name %> <%= coordinadores[i].lastname %>
                                         <span>Coordinador
+                                            <br>
+                                            <br>
+                                            <%= coordinadores[i].mail %>
                                         </span>
                                 </p>
                                 <div class="social-media">

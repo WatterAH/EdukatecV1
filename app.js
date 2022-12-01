@@ -20,10 +20,11 @@ app.use(express.static('public'))
 
 //CONEXION DB
 var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'Watter',
-    password: 'takemebacktola',
-    database: 'users'
+    host: process.env.HOST,
+    user: process.env.USER,
+    port: process.env.DB_PORT,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 })
 
 con.connect((err) => {
